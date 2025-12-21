@@ -98,7 +98,7 @@
         updateActiveButton(button);
 
         // Load new content
-        loadContent(url);
+        loadContent(url, button);
 
         // Haptic feedback (for mobile devices)
         if (navigator.vibrate) {
@@ -123,14 +123,24 @@
     /**
      * Load content into the iframe
      * @param {string} url - URL to load
+     * @param {HTMLElement} button - The button that was clicked
      */
-    function loadContent(url) {
+    function loadContent(url, button) {
         // Hide welcome screen
         if (welcomeScreen) {
             welcomeScreen.classList.remove('active');
         }
 
-        frameContainer.classList.add('loading');
+        // Check if we should skip loading overlay (for first two tabs: index 0 and 1)
+        const buttonIndex = Array.from(navButtons).indexOf(button);
+        const isFastTab = buttonIndex === 0 || buttonIndex === 1;
+
+        if (isFastTab) {
+            frameContainer.classList.remove('loading');
+        } else {
+            frameContainer.classList.add('loading');
+        }
+
         currentUrl = url;
         contentFrame.src = url;
     }
