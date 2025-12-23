@@ -310,7 +310,7 @@ body {
 
 .welcome-message {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    font-size: clamp(1.2rem, 2.4vw, 1.9rem);
     font-weight: 300;
     color: #cbcdd0;
     text-align: center;
